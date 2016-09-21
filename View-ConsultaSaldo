@@ -1,0 +1,29 @@
+package view;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import model.Cliente;
+
+public class ConsultaSaldo {
+
+	public void consulta(ArrayList<Cliente> saldo) {
+		Scanner entrada = new Scanner(System.in);
+		int valor;
+
+		System.out.println("Digite o número da Conta do Cliente: ");
+		valor = entrada.nextInt();
+
+		for (Cliente c : saldo) {
+			if (c.getNumero() == valor) {
+
+				System.out.println("O saldo desta conta é: " + c.getSaldo());
+
+			}
+
+			System.out.println("---------------------------------------------");
+
+		}
+
+	}
+}
