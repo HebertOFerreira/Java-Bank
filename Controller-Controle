@@ -1,0 +1,62 @@
+package controller;
+
+import java.util.ArrayList;
+
+import model.Cliente;
+import view.ConsultaSaldo;
+import view.Depositar;
+import view.Limite;
+import view.Sacar;
+import view.TelaIncluir;
+
+public class Controle {
+
+	ArrayList<Cliente> banco = new ArrayList<Cliente>();
+
+	public boolean processar(int opcao) {
+
+		if (opcao == 1) {
+
+			TelaIncluir i = new TelaIncluir(); // objeto tela (classe) criado, ele abre a tela view incluir tb
+											
+			banco.add(i.mostrarIncluir()); // puxei da tela incluir o metodo incluir
+								
+			return true;
+
+		} else if (opcao == 2) {
+
+			ConsultaSaldo c = new ConsultaSaldo();
+
+			c.consulta(banco);
+
+			return true;
+
+		} else if (opcao == 3) {
+			Depositar depositar = new Depositar();
+			depositar.depositar(banco);
+
+	
+			
+			return true;
+
+		} else if (opcao == 4) {
+			
+			Sacar sacar = new Sacar();
+			sacar.sacar(banco);
+
+			return true;
+
+		} else if (opcao == 5) {
+			Limite limite = new Limite();
+			limite.consulta(banco);
+			
+
+			return true;
+
+		} else
+
+			return false;
+
+	}
+
+}
