@@ -1,0 +1,30 @@
+package view;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import model.Cliente;
+
+public class Limite {
+	Double valor;
+	int nConta;
+	
+	public void consulta(ArrayList<Cliente> limite) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Digite o número da Conta do Cliente: ");
+		nConta = entrada.nextInt();
+		
+		for (Cliente c : limite) {
+			if (c.getNumero() == nConta) {
+				System.out.println("Digite o valor para limite ");
+				entrada = new Scanner(System.in);
+				valor = entrada.nextDouble();
+				c.setLimite(valor);
+				c.setEspecial(true);
+
+			}
+		
+	}
+}
+}
