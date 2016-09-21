@@ -1,0 +1,59 @@
+package view;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import model.Cliente;
+
+public class Sacar {
+
+	public void sacar(ArrayList<Cliente> sacar) {
+		int nConta;
+		Double valor;
+
+		Scanner entrada = new Scanner(System.in);
+
+		System.out.println("Digite o número da conta: ");
+		nConta = entrada.nextInt();
+
+		for (Cliente c : sacar) {
+			if (c.getNumero() == nConta) {
+				System.out.println("Digite um Valor para sacar: ");
+
+				entrada = new Scanner(System.in);
+				valor = entrada.nextDouble();
+
+				// verifica se o valor é maior que o saldo, se ela é especial, e
+				// se o limte + saldo > ou = ao valor pedido
+				if ((valor > c.getSaldo()) && ((c.isEspecial() == true)) && ((c.getLimite() + c.getSaldo() >= valor))) {
+					
+					// se for ele seta o novo saldo, e seta o novo limite
+
+					c.setSaldo((c.getSaldo() + c.getLimite()) - valor);
+					c.setLimite(c.getSaldo() - valor);
+
+					// verifica se o valor para saque é menor que o saldo
+				} else if (valor <= c.getSaldo() && (c.isEspecial() == true)) {
+
+					// se for ele seta o novo saldo menos o valor
+					c.setSaldo(c.getSaldo() - valor);
+
+					// para contas não especiais
+				} else if (valor > c.getSaldo() && (c.isEspecial() == false)) {
+					System.out.println("Você não tem limite o suficiente para Sacar este valor! ");
+
+					// se o valor for menor que o saldo e a conta não for
+					// especial ele seta o novo saldo
+				} else if (valor <= c.getSaldo() && (c.isEspecial() == false)) {
+					c.setSaldo(c.getSaldo() - valor);
+
+					// senão validar o primeiro if ele entrada em saldo
+					// insuficiente
+				} else
+					System.out.println("Você não tem saldo o suficiente! ");
+
+			}
+
+		}
+	}
+}
