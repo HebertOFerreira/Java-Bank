@@ -7,7 +7,7 @@ I have not used a database, because I'm still learning the concepts. So if you q
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
-Esse é o meus primeiros códigos em Java usando o conceito de MVC.
+Esse são os meus primeiros códigos em Java usando o conceito de MVC.
 
 Para esse programa (que é um cadastro de clientes de um banco), eu usei try and catch - tratamentos de exceção. Porém eu fiz isso somente na View-Depositar.
 
