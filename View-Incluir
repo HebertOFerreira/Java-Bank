@@ -1,0 +1,51 @@
+package view;
+
+import java.util.Random;
+import java.util.Scanner;
+
+import model.Cliente;
+
+public class TelaIncluir {
+
+	public Cliente mostrarIncluir(){
+		Scanner leitura = new Scanner(System.in);{
+		Random random = new Random();	
+		int resultado;
+			
+			Cliente cliente = new Cliente(); //objeto cliente criado
+			
+			/* set em nome do cliente (classe) */
+			System.out.println("Digite o nome do Cliente"); 
+			cliente.setNomeCliente(leitura.nextLine());
+			
+			
+			/* set em conta do cliente com random (classe) */
+			resultado = random.nextInt(999999999);  
+			cliente.setNumero(resultado);
+			System.out.print("O número da conta do Cliente é: ");
+			System.out.println(cliente.getNumero());
+			
+			
+			/* set em saldo cliente (classe) */
+			System.out.println("Digite o saldo do Cliente: ");
+			leitura = new Scanner(System.in);
+			cliente.setSaldo(leitura.nextDouble());
+			
+			/* set em limite do cliente (classe) */
+			System.out.println("Digite o limite do Cliente: ");
+			leitura = new Scanner(System.in);
+			cliente.setLimite(leitura.nextDouble());
+			
+			if (cliente.getLimite() == 0){
+				cliente.setEspecial(false);
+			}else 
+				cliente.setEspecial(true);
+			return cliente; //retorna ao objeto cliente
+			
+			
+			
+		}
+	}
+	
+	
+}
