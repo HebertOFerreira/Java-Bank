@@ -1,0 +1,69 @@
+package view;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import model.Cliente;
+
+public class Depositar {
+
+	public void depositar(ArrayList<Cliente> deposito) {
+		int nConta;  //variaves de entrada
+		Double valor = null; //variaves de entrada
+		
+		Scanner entrada = new Scanner(System.in); //inicialização do objeto scanner
+		
+		
+		System.out.println("Digite um número de conta: "); 
+		
+		
+		//tentar pegar um valor inválido, por ex letras
+		try { 
+			nConta = entrada.nextInt();
+		} catch (InputMismatchException o) {
+			System.out.println("Digite um número da conta válido! ");
+			return;
+		}
+		
+		//for aprimorado
+		for (Cliente c : deposito) {
+			
+			//enquanto o numero digitado for diferente da gerado ele vai dar erro
+			while (c.getNumero()!= nConta)
+			{System.out.println("Número inválido");
+			return;
+			}
+			
+			//se o numero digitado for digitado correntamente
+			if (c.getNumero() == nConta) {
+				System.out.println("Digite um Valor para depósito: ");
+				
+				//tentar pegar um valor inválido, por ex letras
+				try {
+					valor = entrada.nextDouble();
+				} catch (InputMismatchException i) {
+					System.out.println("Valor inválido! ");
+					return;
+
+					//se o valor para deposito for menor que 1 ele retorna, se não o deposito é feito
+				}if (valor < 1){
+					System.out.println("O depósito não aceita números negativos e 0 - zero! ");
+				return;
+				
+				}else
+				
+				c.setSaldo(c.getSaldo() + valor);
+
+			
+				
+			
+			}
+		}
+	}
+}
+
+
+	
+
+
